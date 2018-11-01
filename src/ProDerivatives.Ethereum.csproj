@@ -2,6 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageVersion>1.0.1</PackageVersion>
+    <PackageIconUrl>https://raw.githubusercontent.com/ProDerivatives/ProDerivatives.AsymmetricAuthentication/master/ProDIcon.png</PackageIconUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/ProDerivatives/ProDerivatives.Ethereum/master/LICENSE</PackageLicenseUrl>
+    <Owners>ProDerivatives</Owners>
+    <PackageProjectUrl>https://github.com/ProDerivatives/ProDerivatives.Ethereum</PackageProjectUrl>
+    <Title>ProDerivatives.Ethereum</Title>
+    <Description>Signers, validators and helper classes for Ethereum blockchain network.</Description>
   </PropertyGroup>
 
   <ItemGroup>
