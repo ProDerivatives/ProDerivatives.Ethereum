@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageVersion>1.0.1</PackageVersion>
-    <PackageIconUrl>https://raw.githubusercontent.com/ProDerivatives/ProDerivatives.AsymmetricAuthentication/master/ProDIcon.png</PackageIconUrl>
+    <PackageVersion>1.0.2</PackageVersion>
+    <PackageIconUrl>https://raw.githubusercontent.com/IdentityServer/Artwork/master/Logos/IDserver_icon128.jpg</PackageIconUrl>
     <PackageLicenseUrl>https://raw.githubusercontent.com/ProDerivatives/ProDerivatives.Ethereum/master/LICENSE</PackageLicenseUrl>
     <Owners>ProDerivatives</Owners>
     <PackageProjectUrl>https://github.com/ProDerivatives/ProDerivatives.Ethereum</PackageProjectUrl>
