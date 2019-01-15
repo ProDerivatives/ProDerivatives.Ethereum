@@ -1,8 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageVersion>1.0.3</PackageVersion>
     <PackageIconUrl>https://raw.githubusercontent.com/ProDerivatives/ProDerivatives.AsymmetricAuthentication/master/ProDIcon.png</PackageIconUrl>
     <PackageLicenseUrl>https://raw.githubusercontent.com/ProDerivatives/ProDerivatives.Ethereum/master/LICENSE</PackageLicenseUrl>
     <Owners>ProDerivatives</Owners>
