@@ -14,7 +14,7 @@ namespace ProDerivatives.Ethereum.Test
             _ethereumClient = new Web3Client("http://localhost:8545");
         }
 
-
+        [TestCategory("Live")]
         [TestMethod]
         public async Task AccountTest()
         {
@@ -22,7 +22,7 @@ namespace ProDerivatives.Ethereum.Test
             Assert.AreEqual(2, accounts.Length);
         }
 
-        [TestCategory("Live1")]
+        [TestCategory("Live")]
         [TestMethod]
         public async Task CodeTest()
         {
@@ -31,7 +31,7 @@ namespace ProDerivatives.Ethereum.Test
             Assert.IsTrue(code.Length > 1000);
         }
 
-        [TestCategory("Test")]
+        [TestCategory("Mock")]
         [TestMethod]
         public void SignatureTest() {
             var signer = new Signer();
