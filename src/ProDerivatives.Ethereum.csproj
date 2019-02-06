@@ -9,6 +9,8 @@
     <Title>ProDerivatives.Ethereum</Title>
     <Description>Signers, validators and helper classes for Ethereum blockchain network.</Description>
     <Version>1.0.4</Version>
+    <ReleaseVersion>0.2</ReleaseVersion>
+    <PackageVersion>1.0.5</PackageVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Common.Logging.Core" Version="3.4.1" />
