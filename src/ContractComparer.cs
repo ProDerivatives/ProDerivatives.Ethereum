@@ -12,10 +12,10 @@ namespace ProDerivatives.Ethereum
         private readonly Contract _reference;
         private readonly Contract _candidate;
 
-        public ContractComparer(Contract reference, Contract candidate)
+        public ContractComparer(string referenceAbi, string candidateAbi)
         {
-            _reference = reference;
-            _candidate = candidate;
+            _reference = new Contract(null, referenceAbi, string.Empty);
+            _candidate = new Contract(null, candidateAbi, string.Empty);
         }
 
 

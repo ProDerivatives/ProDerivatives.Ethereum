@@ -29,8 +29,8 @@ namespace EthereumTests
         public void CompareCompatibleContracts()
         {
             var contractFile = LoadContractFile("Contracts/Account.json");
-            var contract1 = new Contract(null, contractFile["abi"].ToString(), string.Empty);
-            var contract2 = new Contract(null, contractFile["abi"].ToString(), string.Empty);
+            var contract1 = contractFile["abi"].ToString();
+            var contract2 = contractFile["abi"].ToString();
 
             var contractComparer = new ContractComparer(contract1, contract2);
             var contractsAreEqual = contractComparer.IsInterfaceImplemented();
@@ -43,8 +43,8 @@ namespace EthereumTests
         {
             var contract1File = LoadContractFile("Contracts/Account.json");
             var contract2File = LoadContractFile("Contracts/Account1.json");
-            var contract1 = new Contract(null, contract1File["abi"].ToString(), string.Empty);
-            var contract2 = new Contract(null, contract2File["abi"].ToString(), string.Empty);
+            var contract1 = contract1File["abi"].ToString();
+            var contract2 = contract2File["abi"].ToString();
 
             var contractComparer = new ContractComparer(contract1, contract2);
             var contractsAreEqual = contractComparer.IsInterfaceImplemented();
