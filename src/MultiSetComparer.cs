@@ -7,6 +7,7 @@ namespace ProDerivatives.Ethereum
     public class MultiSetComparer<T> : IEqualityComparer<IEnumerable<T>>
     {
         private readonly IEqualityComparer<T> m_comparer;
+
         public MultiSetComparer(IEqualityComparer<T> comparer = null)
         {
             m_comparer = comparer ?? EqualityComparer<T>.Default;

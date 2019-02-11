@@ -26,15 +26,29 @@ namespace EthereumTests
 
         [TestCategory("Mock")]
         [TestMethod]
-        public void CompareContracts()
+        public void CompareCompatibleContracts()
         {
             var contractFile = LoadContractFile("Contracts/Account.json");
             var contract1 = new Contract(null, contractFile["abi"].ToString(), string.Empty);
             var contract2 = new Contract(null, contractFile["abi"].ToString(), string.Empty);
 
             var contractComparer = new ContractComparer(contract1, contract2);
-            var contractsAreEqual = contractComparer.IsAbiEqual();
+            var contractsAreEqual = contractComparer.IsInterfaceImplemented();
             Assert.IsTrue(contractsAreEqual);
+        }
+
+        [TestCategory("Mock")]
+        [TestMethod]
+        public void CompareIncompatibleContracts()
+        {
+            var contract1File = LoadContractFile("Contracts/Account.json");
+            var contract2File = LoadContractFile("Contracts/Account1.json");
+            var contract1 = new Contract(null, contract1File["abi"].ToString(), string.Empty);
+            var contract2 = new Contract(null, contract2File["abi"].ToString(), string.Empty);
+
+            var contractComparer = new ContractComparer(contract1, contract2);
+            var contractsAreEqual = contractComparer.IsInterfaceImplemented();
+            Assert.IsFalse(contractsAreEqual);
         }
 
     }

@@ -19,7 +19,7 @@ namespace ProDerivatives.Ethereum
         }
 
 
-        public bool IsAbiEqual()
+        public bool IsInterfaceImplemented()
         {
             if (_reference == null)
                 return _candidate == null;
@@ -27,22 +27,33 @@ namespace ProDerivatives.Ethereum
             if (_candidate == null)
                 return false;
 
-            var parameterComparer = new MultiSetComparer<Parameter>();
+            var parameterComparer = new MultiSetComparer<Parameter>(new ParameterComparer());
 
             var referenceFunctions = _reference.ContractBuilder.ContractABI.Functions;
             foreach (var referenceFunction in referenceFunctions)
             {
-                var candidateFunction = _candidate.ContractBuilder.GetFunctionAbi(referenceFunction.Name);
+                var candidateFunction = _candidate.ContractBuilder.ContractABI.Functions.FirstOrDefault(f => f.Name == referenceFunction.Name);
                 if (candidateFunction == null)
                     return false;
 
-                if (!parameterComparer.Equals(referenceFunction.InputParameters.ToList(), candidateFunction.InputParameters.ToList()))
+                if (!parameterComparer.Equals(referenceFunction.InputParameters, candidateFunction.InputParameters))
                     return false;
 
-                if (!parameterComparer.Equals(referenceFunction.OutputParameters.ToList(), candidateFunction.OutputParameters.ToList()))
+                if (!parameterComparer.Equals(referenceFunction.OutputParameters, candidateFunction.OutputParameters))
                     return false;
-
             }
+
+            var referenceEvents = _reference.ContractBuilder.ContractABI.Events;
+            foreach (var referenceEvent in referenceEvents)
+            {
+                var candidateEvent = _candidate.ContractBuilder.ContractABI.Events.FirstOrDefault(e => e.Name == referenceEvent.Name);
+                if (candidateEvent == null)
+                    return false;
+
+                if (!parameterComparer.Equals(referenceEvent.InputParameters, candidateEvent.InputParameters))
+                    return false;
+            }
+
             return true;
         }
 
