@@ -26,7 +26,7 @@ namespace ProDerivatives.Ethereum.Test
 
         [TestCategory("Mock")]
         [TestMethod]
-        public void SignatureTest() {
+        public void SignatureTest1() {
             var signer = new Signer();
             var message = "Some data";
 
@@ -39,6 +39,21 @@ namespace ProDerivatives.Ethereum.Test
             Console.WriteLine(signedMessage);
             var valid = signer.IsValid("0xf35a9f84e7bdceb3ac31da2c5841df7ecfc7b267", signedMessage, message);
             Console.WriteLine(valid);
+        }
+
+        [TestCategory("Mock")]
+        [TestMethod]
+        public void SignatureTest2()
+        {
+            var signer = new Signer();
+            var message = "1550954444168|GET|/accounts|";
+             
+            var s1 = signer.EncodeUTF8AndSign("0xb4c05079c8e78bd4b92fdf16e9de65235c704e1abfd157f214246eb3dca3c2a7", message);
+            // Console.WriteLine($"S1: {s1}");
+
+            var s2 = "0xfc48c06094477e1b51a63e1e30e5dc1fd34ac836924e89881a07e4895907fabc55ed38b96090db6d7e96f151a9edb41ef8fc89f4ceb539fb45f110670f14004f1c";
+
+            Assert.IsTrue(s1 == s2);
         }
 
     }
