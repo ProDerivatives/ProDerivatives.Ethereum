@@ -28,7 +28,7 @@ namespace ProDerivatives.Ethereum
             return hash.HexToByteArray();
         }
 
-        public string Sign(string privateKey, string message)
+        public string HashAndSign(string privateKey, string message)
         {
             return _signer.HashAndSign(message, privateKey);
         }
@@ -38,9 +38,15 @@ namespace ProDerivatives.Ethereum
             return _signer.Sign(message, privateKey);
         }
 
+        public string EncodeUTF8AndSign(string privateKey, string message)
+        {
+            var key = new EthECKey(privateKey);
+            return _signer.EncodeUTF8AndSign(message, key);
+        }
+
         public bool IsValid(string address, string signature, string message)
         {
-            var r = _signer.HashAndEcRecover(message, signature);
+            var r = _signer.EncodeUTF8AndEcRecover(message, signature);
             return address.ToLower() == r.ToLower();
         }
 

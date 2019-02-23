@@ -11,5 +11,7 @@ namespace ProDerivatives.Ethereum
         Task<string> GetContractCode(string contractAddress);
 
         Contract GetContract(string abi, string contractAddress);
+
+        Task<string> Sign(string signerAddress, string message);
     }
 }

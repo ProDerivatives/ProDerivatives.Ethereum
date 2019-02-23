@@ -29,6 +29,12 @@ namespace ProDerivatives.Ethereum
             return _web3.Eth.GetContract(abi, contractAddress);
         }
 
+        public async Task<string> Sign(string signerAddress, string message)
+        {
+            var signature = await _web3.Eth.Sign.SendRequestAsync(signerAddress, message);
+            return signature;
+        }
+
     }
 
 }
