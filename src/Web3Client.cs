@@ -31,7 +31,8 @@ namespace ProDerivatives.Ethereum
 
         public async Task<string> Sign(string signerAddress, string message)
         {
-            var signature = await _web3.Eth.Sign.SendRequestAsync(signerAddress, message);
+            var converter = new Nethereum.Hex.HexConvertors.HexUTF8StringConvertor();
+            var signature = await _web3.Eth.Sign.SendRequestAsync(signerAddress, converter.ConvertToHex(message));
             return signature;
         }
 
