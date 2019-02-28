@@ -12,7 +12,7 @@ namespace ProDerivatives.Ethereum.Test
         [TestInitialize]
         public void Init() {
             // Run against Kovan
-            _ethereumClient = /* new Web3Client("http://52.151.43.91:8545"); */ new Web3Client("https://eth-kovan.proderivatives.com");  /* new Web3Client("http://localhost:8545"); */  // new Web3Client("https://kovan.infura.io/v3/61aa366bce0d408196dbe974dd1e642b");
+            _ethereumClient = new Web3Client("https://eth-kovan.proderivatives.com");  /* new Web3Client("http://localhost:8545"); */
         }
 
         [TestCategory("Live")]

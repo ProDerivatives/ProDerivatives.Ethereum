@@ -10,7 +10,7 @@
     <Description>Signers, validators and helper classes for Ethereum blockchain network.</Description>
     <Version>1.0.4</Version>
     <ReleaseVersion>1</ReleaseVersion>
-    <PackageVersion>1.0.8</PackageVersion>
+    <PackageVersion>1.0.9</PackageVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Common.Logging.Core" Version="3.4.1" />
