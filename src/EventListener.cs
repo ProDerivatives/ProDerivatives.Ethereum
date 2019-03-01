@@ -13,10 +13,10 @@ namespace ProDerivatives.Ethereum
         private readonly string _eventName;
         private readonly int _pollingIntervall;
         private readonly Action<T> _callback;
-        private readonly ILogger<EventListener<T>> _logger;
+        private readonly ILogger<T> _logger;
 
 
-        public EventListener(IEthereumClient client, string abi, string contractAddress, string eventName, int pollingIntervall, Action<T> callback, ILogger<EventListener<T>> logger)
+        public EventListener(IEthereumClient client, string abi, string contractAddress, string eventName, int pollingIntervall, Action<T> callback, ILogger<T> logger)
         {
             _client = client;
             _abi = abi;
