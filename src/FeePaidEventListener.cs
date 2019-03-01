@@ -6,7 +6,7 @@ using Nethereum.Web3;
 
 namespace ProDerivatives.Ethereum
 {
-    public class FeeEventListener
+    public class FeePaidEventListener
     {
         private string _owner;
         private IEthereumClient _client;
@@ -14,7 +14,7 @@ namespace ProDerivatives.Ethereum
         private string _referenceAccountAddress;
         private ICollection<string> _derivativeAddresses;
 
-        public FeeEventListener(IEthereumClient client, string owner, IContract derivativeContract, string referenceAccountAddress, ICollection<string> derivativeContractAddresses)
+        public FeePaidEventListener(IEthereumClient client, string owner, IContract derivativeContract, string referenceAccountAddress, ICollection<string> derivativeContractAddresses)
         {
             _owner = owner;
             _client = client;
@@ -42,7 +42,7 @@ namespace ProDerivatives.Ethereum
             {
                 await Task.Delay(5000);
                 Console.WriteLine("Ping");
-                var fees = await feePaidEvent.GetFilterChanges<FeeEvent>(getAll);
+                var fees = await feePaidEvent.GetFilterChanges<FeePaidEvent>(getAll);
                 foreach (var fee in fees) {
                     var sender = fee.Event.Sender;
                     Console.WriteLine(sender);
