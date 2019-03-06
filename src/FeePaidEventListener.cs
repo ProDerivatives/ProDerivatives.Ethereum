@@ -10,7 +10,7 @@ namespace ProDerivatives.Ethereum
     {
         private string _owner;
         private IEthereumClient _client;
-        private IContract _derivative;
+        private IContract _derivative;  
         private string _referenceAccountAddress;
         private ICollection<string> _derivativeAddresses;
 
