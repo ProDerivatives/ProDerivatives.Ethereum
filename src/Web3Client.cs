@@ -19,6 +19,11 @@ namespace ProDerivatives.Ethereum
             _web3 = new Web3(new Account(privateKey), endpointAddress);
         }
 
+        public void SetDefaultGas(int gas)
+        {
+            _web3.TransactionManager.DefaultGas = gas;
+        }
+
         public async Task<string[]> GetAccounts()
         {
             var accounts = await _web3.Eth.Accounts.SendRequestAsync();
