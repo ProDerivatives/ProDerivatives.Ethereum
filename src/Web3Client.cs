@@ -1,5 +1,6 @@
 ﻿using Nethereum.Contracts;
 using Nethereum.Web3;
+using Nethereum.Web3.Accounts;
 using System.Threading.Tasks;
 
 namespace ProDerivatives.Ethereum
@@ -11,6 +12,11 @@ namespace ProDerivatives.Ethereum
         public Web3Client(string endpointAddress)
         {
             _web3 = new Web3(endpointAddress);
+        }
+
+        public Web3Client(string endpointAddress, string privateKey)
+        {
+            _web3 = new Web3(new Account(privateKey), endpointAddress);
         }
 
         public async Task<string[]> GetAccounts()

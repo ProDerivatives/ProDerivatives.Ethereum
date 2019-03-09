@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using Nethereum.Hex.HexTypes;
 
 namespace ProDerivatives.Ethereum
 {
@@ -11,45 +12,37 @@ namespace ProDerivatives.Ethereum
         private readonly string _abi;
         private readonly string _contractAddress;
         private readonly string _eventName;
-        private readonly int _pollingIntervall;
-        private readonly Action<T> _callback;
+        private readonly Action<string, T> _callback;
         private readonly ILogger<T> _logger;
 
+        private Nethereum.Contracts.Event _event;
+        private HexBigInteger _filter;
 
-        public EventListener(IEthereumClient client, string abi, string contractAddress, string eventName, int pollingIntervall, Action<T> callback, ILogger<T> logger)
+        public EventListener(IEthereumClient client, string abi, string contractAddress, string eventName, Action<string, T> callback, ILogger<T> logger)
         {
             _client = client;
             _abi = abi;
             _contractAddress = contractAddress;
             _eventName = eventName;
-            _pollingIntervall = pollingIntervall;
             _callback = callback;
             _logger = logger;
         }
 
-        public Task Start()
+        public async Task Start()
         {
-            return Task.Run(Listen);
+            var contract = _client.GetContract(_abi, _contractAddress);
+            _event = contract.GetEvent(_eventName);
+            _filter = await _event.CreateFilterAsync();
         }
 
-        private async Task Listen()
+        public async Task GetChanges()
         {
-            _logger.LogInformation($"Start listening for {_eventName} events on {_contractAddress}");
-            var contract = _client.GetContract(_abi, _contractAddress);
-            var contractEvent = contract.GetEvent(_eventName);
-            var getAll = await contractEvent.CreateFilterAsync();
-            while (true)
+            var newEvents = await _event.GetFilterChanges<T>(_filter);
+            foreach (var newEvent in newEvents)
             {
-                await Task.Delay(_pollingIntervall);
-                _logger.LogInformation("Ping");
-                var newEvents = await contractEvent.GetFilterChanges<T>(getAll);
-                foreach (var newEvent in newEvents)
-                {
-                    _callback(newEvent.Event);
-                }
+                _callback(_contractAddress, newEvent.Event);
             }
         }
-
     }
 }
 
