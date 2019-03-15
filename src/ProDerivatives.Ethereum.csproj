@@ -9,9 +9,15 @@
     <Title>ProDerivatives.Ethereum</Title>
     <Description>Signers, validators and helper classes for Ethereum blockchain network.</Description>
     <Version>1.0.4</Version>
-    <PackageVersion>1.0.14</PackageVersion>
+    <PackageVersion>1.0.15</PackageVersion>
     <ReleaseVersion>1</ReleaseVersion>
     <Authors>ProDerivatives</Authors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Common.Logging.Core" Version="3.4.1" />
