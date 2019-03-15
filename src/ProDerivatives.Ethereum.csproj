@@ -12,6 +12,8 @@
     <PackageVersion>1.0.15</PackageVersion>
     <ReleaseVersion>1</ReleaseVersion>
     <Authors>ProDerivatives</Authors>
+    <PackOnBuild>true</PackOnBuild>
+    <PackageId>ProDerivative.Ethereum</PackageId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug</OutputPath>
