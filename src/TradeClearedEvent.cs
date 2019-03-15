@@ -3,6 +3,7 @@ using Nethereum.ABI.FunctionEncoding.Attributes;
 
 namespace ProDerivatives.Ethereum
 {
+    [Event("TradeCleared")]
     public class TradeClearedEvent
     {
         [Parameter("address", "longAccount", 1, false)]
@@ -11,10 +12,10 @@ namespace ProDerivatives.Ethereum
         [Parameter("address", "shortAccount", 2, false)]
         public string ShortAccount { get; set; }
 
-        [Parameter("int", "notional", 3, false)]
+        [Parameter("int32", "notional", 3, false)]
         public int Notional { get; set; }
 
-        [Parameter("int", "xp", 4, false)]
+        [Parameter("int64", "xp", 4, false)]
         public int Price { get; set; }
     }
 }
