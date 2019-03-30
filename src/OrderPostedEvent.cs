@@ -10,9 +10,9 @@ namespace ProDerivatives.Ethereum
         public string Account { get; set; }
 
         [Parameter("int32", "notional", 2)]
-        public int Notional { get; set; }
+        public Int32 Notional { get; set; }
 
         [Parameter("int64", "xp", 3)]
-        public int Price { get; set; }
+        public Int64 Price { get; set; }
     }
 }

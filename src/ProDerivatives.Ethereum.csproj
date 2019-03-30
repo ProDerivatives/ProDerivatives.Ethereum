@@ -8,7 +8,7 @@
     <PackageProjectUrl>https://github.com/ProDerivatives/ProDerivatives.Ethereum</PackageProjectUrl>
     <Title>ProDerivatives.Ethereum</Title>
     <Description>Signers, validators and helper classes for Ethereum blockchain network.</Description>
-    <PackageVersion>1.0.16</PackageVersion>
+    <PackageVersion>1.0.17</PackageVersion>
     <ReleaseVersion>1</ReleaseVersion>
     <Authors>ProDerivatives</Authors>
     <PackOnBuild>true</PackOnBuild>

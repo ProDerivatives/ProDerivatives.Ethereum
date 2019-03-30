@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 using Nethereum.ABI.FunctionEncoding.Attributes;
 
 namespace ProDerivatives.Ethereum
@@ -10,6 +11,6 @@ namespace ProDerivatives.Ethereum
         public string Sender {get; set;}
 
         [Parameter("uint256", "amount", 2, false)]
-        public uint Amount {get; set;}
+        public BigInteger Amount {get; set;}
     }
 }

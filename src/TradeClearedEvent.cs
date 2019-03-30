@@ -13,9 +13,9 @@ namespace ProDerivatives.Ethereum
         public string ShortAccount { get; set; }
 
         [Parameter("int32", "notional", 3, false)]
-        public int Notional { get; set; }
+        public Int32 Notional { get; set; }
 
         [Parameter("int64", "xp", 4, false)]
-        public int Price { get; set; }
+        public Int64 Price { get; set; }
     }
 }
