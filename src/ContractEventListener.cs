@@ -5,7 +5,7 @@ using Nethereum.Hex.HexTypes;
 
 namespace ProDerivatives.Ethereum
 {
-    public class EventListener<T>
+    public class ContractEventListener<T>
     where T : new()
     {
         private readonly IEthereumClient _client;
@@ -18,7 +18,7 @@ namespace ProDerivatives.Ethereum
         private Nethereum.Contracts.Event _event;
         private HexBigInteger _filter;
 
-        public EventListener(IEthereumClient client, string abi, string contractAddress, string eventName, Action<string, T> callback, ILogger<T> logger)
+        public ContractEventListener(IEthereumClient client, string abi, string contractAddress, string eventName, Action<string, T> callback, ILogger<T> logger)
         {
             _client = client;
             _abi = abi;
