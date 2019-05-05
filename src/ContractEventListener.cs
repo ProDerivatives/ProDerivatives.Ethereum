@@ -13,12 +13,12 @@ namespace ProDerivatives.Ethereum
         private readonly string _contractAddress;
         private readonly string _eventName;
         private readonly Action<string, T> _callback;
-        private readonly ILogger<T> _logger;
+        private readonly ILogger _logger;
 
         private Nethereum.Contracts.Event _event;
         private HexBigInteger _filter;
 
-        public ContractEventListener(IEthereumClient client, string abi, string contractAddress, string eventName, Action<string, T> callback, ILogger<T> logger)
+        public ContractEventListener(IEthereumClient client, string abi, string contractAddress, string eventName, Action<string, T> callback, ILogger logger)
         {
             _client = client;
             _abi = abi;
