@@ -55,7 +55,7 @@ namespace ProDerivatives.Ethereum
         /// </summary>
         /// <param name="logger">A logger implementation.</param>
         /// <returns>The result of the signature check.</returns>
-        public static Func<string, string, string, bool> VerifySignature(ILogger<Signer> logger = null)
+        public static Func<string, string, string, bool> VerifySignature(ILogger logger)
         {
             return (signature, publicKey, message) =>
             {
@@ -67,13 +67,10 @@ namespace ProDerivatives.Ethereum
                 }
                 catch (Exception ex)
                 {
-                    if (logger != null)
-                        logger.LogError($"{ex.Message}{Environment.NewLine}Signature: {signature}, Key: {publicKey}, Message: {message}");
+                    logger.LogError($"{ex.Message}{Environment.NewLine}Signature: {signature}, Key: {publicKey}, Message: {message}");
                     return false;
                 }
             };
         }
-
     }
-
 }
