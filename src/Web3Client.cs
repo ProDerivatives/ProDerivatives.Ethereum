@@ -1,6 +1,7 @@
 ﻿using Nethereum.Contracts;
 using Nethereum.Web3;
 using Nethereum.Web3.Accounts;
+using System;
 using System.Threading.Tasks;
 
 namespace ProDerivatives.Ethereum
@@ -17,6 +18,11 @@ namespace ProDerivatives.Ethereum
         public Web3Client(string endpointAddress, string privateKey)
         {
             _web3 = new Web3(new Account(privateKey), endpointAddress);
+        }
+
+        public void SetConnectionTimeout(TimeSpan connectionTimeout)
+        {
+            Nethereum.JsonRpc.Client.ClientBase.ConnectionTimeout = connectionTimeout;
         }
 
         public void SetDefaultGas(int gas)

@@ -13,5 +13,9 @@ namespace ProDerivatives.Ethereum
         Contract GetContract(string abi, string contractAddress);
 
         Task<string> Sign(string signerAddress, string message);
+
+        void SetDefaultGas(int gas);
+
+        void SetConnectionTimeout(TimeSpan connectionTimeout);
     }
 }
