@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Nethereum.Contracts;
+using Nethereum.Hex.HexTypes;
 
 namespace ProDerivatives.Ethereum
 {
@@ -17,5 +18,7 @@ namespace ProDerivatives.Ethereum
         void SetDefaultGas(int gas);
 
         void SetConnectionTimeout(TimeSpan connectionTimeout);
+
+        Task<BlockInfo> GetBlockInfo(HexBigInteger blockNumber);
     }
 }

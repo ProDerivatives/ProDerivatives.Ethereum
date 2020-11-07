@@ -12,13 +12,13 @@ namespace ProDerivatives.Ethereum
         private readonly string _abi;
         private readonly string _contractAddress;
         private readonly string _eventName;
-        private readonly Action<string, T> _callback;
+        private readonly Action<string, BlockInfo, T> _callback;
         private readonly ILogger _logger;
 
         private Nethereum.Contracts.Event _event;
         private HexBigInteger _filter;
 
-        public ContractEventListener(IEthereumClient client, string abi, string contractAddress, string eventName, Action<string, T> callback, ILogger logger)
+        public ContractEventListener(IEthereumClient client, string abi, string contractAddress, string eventName, Action<string, BlockInfo, T> callback, ILogger logger)
         {
             _client = client;
             _abi = abi;
@@ -28,7 +28,7 @@ namespace ProDerivatives.Ethereum
             _logger = logger;
         }
 
-        public async Task Start()
+        public async Task Init()
         {
             var contract = _client.GetContract(_abi, _contractAddress);
             _event = contract.GetEvent(_eventName);
@@ -40,7 +40,18 @@ namespace ProDerivatives.Ethereum
             var newEvents = await _event.GetFilterChanges<T>(_filter);
             foreach (var newEvent in newEvents)
             {
-                _callback(_contractAddress, newEvent.Event);
+                _callback(_contractAddress, new BlockInfo(newEvent.Log.BlockNumber, DateTime.UtcNow), newEvent.Event);
+            }
+        }
+
+        public async Task GetAllChanges()
+        {
+            var filter = await _event.CreateFilterAsync(new Nethereum.RPC.Eth.DTOs.BlockParameter(0));
+            var newEvents = await _event.GetAllChanges<T>(filter);
+            foreach (var newEvent in newEvents)
+            {
+                var blockInfo = await _client.GetBlockInfo(newEvent.Log.BlockNumber);
+                _callback(_contractAddress, blockInfo, newEvent.Event);
             }
         }
     }

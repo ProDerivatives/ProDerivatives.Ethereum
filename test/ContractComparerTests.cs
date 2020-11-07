@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ProDerivatives.Ethereum;
 
-namespace EthereumTests
+namespace ProDerivatives.Ethereum.Test
 {
     [TestClass]
     public class ContractComparerTests

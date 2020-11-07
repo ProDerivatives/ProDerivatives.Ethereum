@@ -1,4 +1,6 @@
 ﻿using Nethereum.Contracts;
+using Nethereum.Hex.HexTypes;
+using Nethereum.RPC.Eth.DTOs;
 using Nethereum.Web3;
 using Nethereum.Web3.Accounts;
 using System;
@@ -51,6 +53,12 @@ namespace ProDerivatives.Ethereum
             var converter = new Nethereum.Hex.HexConvertors.HexUTF8StringConvertor();
             var signature = await _web3.Eth.Sign.SendRequestAsync(signerAddress, converter.ConvertToHex(message));
             return signature;
+        }
+
+        public async Task<BlockInfo> GetBlockInfo(HexBigInteger blockNumber)
+        {
+            var block = await _web3.Eth.Blocks.GetBlockWithTransactionsByNumber.SendRequestAsync(blockNumber);
+            return new BlockInfo(block.Number, block.Timestamp);
         }
 
     }
